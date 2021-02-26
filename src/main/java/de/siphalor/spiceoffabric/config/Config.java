@@ -89,13 +89,13 @@ public class Config {
 	public static Food food;
 	public static class Food {
 		@AConfigEntry(comment = "Calculates the food level bonus to earn from eating a food item")
-		public String hunger = "hungerValue * 0.7 ^ timesEaten";
+		public String hunger = "hungerValue * 0.8 ^ timesEaten";
 
 		@AConfigEntry(comment = "Calculates the saturation modifier for a food item")
-		public String saturation = "saturationValue";
+		public String saturation = "saturationValue * 0.6 ^ timesEaten";
 
 		@AConfigEntry(comment = "Calculates the time to consume an item in ticks")
-		public String consumeDuration = "consumeDuration * 1.3 ^ timesEaten";
+		public String consumeDuration = "consumeDuration";
 
 		@AConfigEntry(
 				comment = "Sets the amount of eaten foods to keep in the history",

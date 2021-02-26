@@ -57,8 +57,8 @@ public abstract class MixinHungerManager implements IHungerManager {
 	@Inject(method = "eat", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/item/Item;getFoodComponent()Lnet/minecraft/item/FoodComponent;"), cancellable = true)
     public void onItemEat(Item item, ItemStack stack, CallbackInfo callbackInfo) {
 		Config.setHungerExpressionValues(spiceOfFabric_foodHistory.getTimesEaten(stack), Objects.requireNonNull(item.getFoodComponent()).getHunger(), item.getFoodComponent().getSaturationModifier(), stack.getMaxUseTime());
-		int hunger = Config.getHungerValue();
-		float saturation = Config.getSaturationValue();
+		int hunger = Config.getHungerValue() + item.getFoodComponent()).getHunger()/2;
+		float saturation = Config.getSaturationValue()*2;
 		add(hunger, saturation);
 		if(spiceOfFabric_player != null) {
 			SpiceOfFabric.onEaten(spiceOfFabric_player, spiceOfFabric_foodHistory, stack);
